@@ -5,18 +5,6 @@ import { useEffect, useState } from "react";
 
 const SalesView = () => {
   const selector = useSelector((state) => state.showProducts);
-  /*    console.log(selector); */
-  /*   console.log(functionShowProducts.filterShowProducts(selector)); */
-
-  const [stateArraySalesView, setStateArraySalesView] = useState([]);
-
-  useEffect(() => {
-    setStateArraySalesView(functionShowProducts.filterShowProducts(selector));
-  }, [
-    selector.sellersCombobox.selection,
-    selector.productBrandCombobox.selection,
-    [selector.productTypeCombobox.selection],
-  ]);
 
   return (
     <div className="divContainerSalesView00">
@@ -29,7 +17,7 @@ const SalesView = () => {
         <h3>Precio</h3>
       </div>
       <div>
-        {stateArraySalesView.map((listFilterShowProducts) => {
+        {functionShowProducts.filterShowProducts(selector).map((listFilterShowProducts) => {
           return (
             <div>
               <h3>{listFilterShowProducts.dateSales}</h3>

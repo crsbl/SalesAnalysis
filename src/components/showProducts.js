@@ -48,7 +48,7 @@ const ShowProducts = ({ hookStateShowProducts }) => {
     <div className="divContainerShowProducts00">
       <h2>Mostrar productos por</h2>
       <div>
-        <h3>Buscar</h3>
+        <h3>Buscar producto</h3>
         <input
           value={selector.inputSearcher}
           onChange={(e) => {
@@ -104,7 +104,7 @@ const ShowProducts = ({ hookStateShowProducts }) => {
       </div>
 
       <div>
-        <h3>Marca</h3>
+        <h3>Marcas</h3>
         <input
           value={inputsCombobox.inputProductBrandCombobox}
           onClick={() => {
