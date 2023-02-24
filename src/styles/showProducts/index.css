@@ -1,0 +1,23 @@
+
+main > section:nth-child(1){
+    
+  }
+.divContainerShowProducts00{
+    display: flex;
+    flex-flow: column nowrap;
+    gap:1rem;
+    align-items: center;
+    font-family: Montserrat, sans-serif;
+}
+
+  .divContainerShowProducts00 > div > div  {
+
+  display: flex;
+  flex-flow: column nowrap;
+  }
+  .divContainerShowProducts00 > div  {
+    display: flex;
+    flex-flow: column nowrap;
+    width:10rem;
+    border:solid .1rem green;
+    }

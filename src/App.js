@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import ShowProducts from "./components/showProducts";
+import SalesView from './components/salesView';
+import { useState } from "react";
 
 function App() {
+  const [stateShowProducts, setStateShowProducts] = useState({
+    inputSearcher: "",
+    productTypeCombobox: {
+      state: false,
+      selection: 0,
+    },
+    productBrandCombobox: {
+      state: false,
+      selection: 0,
+    },
+    sellersCombobox: {
+      state: false,
+      selection: 0,
+    },
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h3>Analisis de ventas en proceso</h3>
       </header>
+      <main>
+        <section>
+          <ShowProducts
+            hookStateShowProducts={[stateShowProducts, setStateShowProducts]}
+          />
+        </section>
+        <section>
+          <SalesView/>
+        </section>
+      </main>
     </div>
   );
 }
