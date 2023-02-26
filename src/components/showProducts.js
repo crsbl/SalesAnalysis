@@ -1,6 +1,7 @@
 import mock from "../mock";
 import "../styles/showProducts/index.css";
 import typeState from "../state/showProducts/types";
+import functionShowProducts from "../functions/functionShowProducts";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
@@ -38,16 +39,32 @@ const ShowProducts = ({ hookStateShowProducts }) => {
       inputProductBrandCombobox: input01,
       inputSellersCombobox: input02,
     });
-    console.log(selector.date.selection);
+    console.log(selector.date);
   }, [
     selector.productTypeCombobox.selection,
     selector.productBrandCombobox.selection,
     selector.sellersCombobox.selection,
   ]);
 
+  useEffect(() => {
+    dispatch({
+      type: typeState.CHANGE_INPUT_START_DATE,
+      payload: functionShowProducts.filterShowProducts(selector).sort((a, b) => {
+        if (new Date(a.dateSales).getTime() > new Date(b.dateSales).getTime()) {
+          return 1;
+        }
+        if (new Date(a.dateSales).getTime() < new Date(b.dateSales).getTime()) {
+          return -1;
+        }
+        return 0;
+      })[0].dateSales,
+    });
+    
+  }, []);
+
   return (
     <div className="divContainerShowProducts00">
-      <h2>Mostrar productos por</h2>
+      <h2>Mostrar productos</h2>
       <div>
         <h3>Buscar producto</h3>
         <input
@@ -194,7 +211,7 @@ const ShowProducts = ({ hookStateShowProducts }) => {
 
       <div>
         <div>
-          <h3>fecha especifica</h3>
+          <h3> rango de fechas</h3>
           <input
             defaultChecked={selector.date.state}
             onChange={() => {
@@ -213,22 +230,51 @@ const ShowProducts = ({ hookStateShowProducts }) => {
             type="checkbox"
           ></input>
         </div>
+        <div>
+          <h3>Inicio</h3>
+          <input
+            value={selector.date.startDate}
+            onChange={(e) => {
+              if (
+                new Date(selector.date.finishDate).getTime() <
+                new Date(e.currentTarget.value).getTime()
+              ) {
+                alert("Fecha de inicio no puede ser mayor a fecha fin");
+              } else {
+                dispatch({
+                  type: typeState.CHANGE_INPUT_START_DATE,
+                  payload: e.currentTarget.value,
+                });
+              }
+            }}
+            disabled={selector.date.state ? false : true}
+            type="date"
+            data-date-format="DD MMMM YYYY"
+          ></input>
+        </div>
 
-        <input
-          value={selector.date.selection}
-          onChange={(e) => {
-
-            dispatch({
-              type: typeState.CHANGE_INPUT_DATE,
-              payload: e.currentTarget.value,
-            });
-            console.log(selector.date.selection,selector.date.state);
-          }}
-    disabled={selector.date.state ? false :true}
-        
-          type="date"
-          data-date-format="DD MMMM YYYY"
-        ></input>
+        <div>
+          <h3>Fin</h3>
+          <input
+            value={selector.date.finishDate}
+            onChange={(e) => {
+              if (
+                new Date(selector.date.startDate).getTime() >
+                new Date(e.currentTarget.value).getTime()
+              ) {
+                alert("Fecha fin no puede ser menor a fecha inicio-------");
+              } else {
+                dispatch({
+                  type: typeState.CHANGE_INPUT_FINISH_DATE,
+                  payload: e.currentTarget.value,
+                });
+              }
+            }}
+            disabled={selector.date.state ? false : true}
+            type="date"
+            data-date-format="DD MMMM YYYY"
+          ></input>
+        </div>
       </div>
     </div>
   );

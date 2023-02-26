@@ -86,17 +86,17 @@ const mock = () => {
   ];
 
   const sales = [
-    { sellersId: 0, itemsId: 3, date: "2023-02-01" },
-    { sellersId: 1, itemsId: 2, date: "2023-02-01" },
-    { sellersId: 1, itemsId: 0, date: "2023-02-01" },
-    { sellersId: 2, itemsId: 4, date: "2023-02-01" },
-    { sellersId: 1, itemsId: 5, date: "2023-02-01" },
-    { sellersId: 1, itemsId: 6, date: "2023-02-01" },
-    { sellersId: 0, itemsId: 7, date: "2023-02-01" },
-    { sellersId: 0, itemsId: 8, date: "2023-02-01" },
-    { sellersId: 0, itemsId: 8, date: "2023-02-01" },
-    { sellersId: 1, itemsId: 1, date: "2023-02-01" },
-    { sellersId: 1, itemsId: 1, date: "2023-02-01" },
+    { sellersId: 0, itemsId: 3, date: "2023-02-12" },
+    { sellersId: 1, itemsId: 2, date: "2023-02-20" },
+    { sellersId: 1, itemsId: 0, date: "2023-02-10" },
+    { sellersId: 2, itemsId: 4, date: "2023-02-11" },
+    { sellersId: 1, itemsId: 5, date: "2023-02-09" },
+    { sellersId: 1, itemsId: 6, date: "2023-02-08" },
+    { sellersId: 0, itemsId: 7, date: "2023-02-22" },
+    { sellersId: 0, itemsId: 8, date: "2023-02-02" },
+    { sellersId: 0, itemsId: 8, date: "2023-02-02" },
+    { sellersId: 1, itemsId: 1, date: "2023-02-03" },
+    { sellersId: 1, itemsId: 1, date: "2023-02-04" },
   ];
 
   return {

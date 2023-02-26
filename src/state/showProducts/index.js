@@ -11,7 +11,8 @@ let year = dayac.getFullYear();
 const estadoInicial = {
   inputSearcher: "",
   date: {
-    selection: `${year}-${month}-${day}`,
+    startDate: `${year}-${month}-${day}`,
+    finishDate: `${year}-${month}-${day}`,
     state: false,
   },
   productTypeCombobox: {
@@ -84,10 +85,15 @@ function rootReducer(state = estadoInicial, accion) {
         ...state,
         inputSearcher: accion.payload,
       };
-    case typeState.CHANGE_INPUT_DATE:
+    case typeState.CHANGE_INPUT_START_DATE:
       return {
         ...state,
-        date: { ...state.date, selection: accion.payload },
+        date: { ...state.date, startDate: accion.payload },
+      };
+    case typeState.CHANGE_INPUT_FINISH_DATE:
+      return {
+        ...state,
+        date: { ...state.date, finishDate: accion.payload },
       };
     case typeState.CHANGE_INPUT_CHECKBOX_DATE:
       return {
