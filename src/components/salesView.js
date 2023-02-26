@@ -1,5 +1,5 @@
 import "../styles/salesView/index.css";
-import functionShowProducts from "./functionShowProducts";
+import functionShowProducts from "../functions/functionShowProducts";
 import { useSelector } from "react-redux";
 
 const SalesView = () => {

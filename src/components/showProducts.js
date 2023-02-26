@@ -38,6 +38,7 @@ const ShowProducts = ({ hookStateShowProducts }) => {
       inputProductBrandCombobox: input01,
       inputSellersCombobox: input02,
     });
+    console.log(selector.date.selection);
   }, [
     selector.productTypeCombobox.selection,
     selector.productBrandCombobox.selection,
@@ -189,6 +190,45 @@ const ShowProducts = ({ hookStateShowProducts }) => {
             );
           })}
         </div>
+      </div>
+
+      <div>
+        <div>
+          <h3>fecha especifica</h3>
+          <input
+            defaultChecked={selector.date.state}
+            onChange={() => {
+              if (selector.date.state === true) {
+                dispatch({
+                  type: typeState.CHANGE_INPUT_CHECKBOX_DATE,
+                  payload: false,
+                });
+              } else {
+                dispatch({
+                  type: typeState.CHANGE_INPUT_CHECKBOX_DATE,
+                  payload: true,
+                });
+              }
+            }}
+            type="checkbox"
+          ></input>
+        </div>
+
+        <input
+          value={selector.date.selection}
+          onChange={(e) => {
+
+            dispatch({
+              type: typeState.CHANGE_INPUT_DATE,
+              payload: e.currentTarget.value,
+            });
+            console.log(selector.date.selection,selector.date.state);
+          }}
+    disabled={selector.date.state ? false :true}
+        
+          type="date"
+          data-date-format="DD MMMM YYYY"
+        ></input>
       </div>
     </div>
   );

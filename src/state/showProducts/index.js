@@ -1,7 +1,19 @@
 import typeState from "./types";
 
+let dayac = new Date();
+let day = dayac.getDate() > 10 ? dayac.getDate() : "0" + dayac.getDate();
+let month =
+  dayac.getMonth() + 1 > 10
+    ? dayac.getMonth() + 1
+    : "0" + (dayac.getMonth() + 1);
+let year = dayac.getFullYear();
+
 const estadoInicial = {
   inputSearcher: "",
+  date: {
+    selection: `${year}-${month}-${day}`,
+    state: false,
+  },
   productTypeCombobox: {
     state: false,
     selection: -1,
@@ -67,11 +79,21 @@ function rootReducer(state = estadoInicial, accion) {
           selection: accion.payload,
         },
       };
-      case typeState.CHANGE_INPUT_ITEM_SEARCHER:
-        return {
-          ...state,
-          inputSearcher:accion.payload,
-        };
+    case typeState.CHANGE_INPUT_ITEM_SEARCHER:
+      return {
+        ...state,
+        inputSearcher: accion.payload,
+      };
+    case typeState.CHANGE_INPUT_DATE:
+      return {
+        ...state,
+        date: { ...state.date, selection: accion.payload },
+      };
+    case typeState.CHANGE_INPUT_CHECKBOX_DATE:
+      return {
+        ...state,
+        date: { ...state.date, state: accion.payload },
+      };
     default:
       return state;
   }

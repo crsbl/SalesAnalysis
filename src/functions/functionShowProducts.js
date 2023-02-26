@@ -36,7 +36,6 @@ const functionShowProducts = {
                               ? listTypesProducts.id
                               : selector.productTypeCombobox.selection)
                           ) {
-                            console.log(listSellers.name, listSales.date);
                             arrayResult00.push({
                               dateSales: listSales.date,
                               itemName: listItems.name,
@@ -56,39 +55,26 @@ const functionShowProducts = {
           }
         }
       });
-
-      /*     mock().sellers.forEach((listSellers) => {
-        if (listSales.sellersId === listSellers.id) {
-          mock().items.forEach((listItems) => {
-            if (listSales.itemsId === listItems.id) {
-              mock().productBrand.forEach((listProductBrand) => {
-                if (listProductBrand.id === listItems.idProductBrand) {
-                  mock().typesProducts.forEach((listTypesProducts) => {
-                    if (listTypesProducts.id ===  listItems.idtypeProduct) {
-                      arrayResult00.push({
-                        dateSales: listSales.date,
-                        sellername: listSellers.name,
-                        itemName: listItems.name,
-                        TypesProductsName: listTypesProducts.name,
-                        ProductBrandName: listProductBrand.name,
-                        itemPrice: listItems.price,
-                      });
-                    }
-                  });
-                }
-              });
-            }
-          });
-        }
-      }); */
     });
 
-    const result = arrayResult00.filter(
-        (number) =>
-          number.itemName.toLowerCase().slice(0, selector.inputSearcher.length) ==
-          selector.inputSearcher.toLowerCase()
-      );
-
+    const result =
+      selector.date.state === true
+        ? arrayResult00
+            .filter(
+              (number) =>
+                number.itemName
+                  .toLowerCase()
+                  .slice(0, selector.inputSearcher.length) ==
+                selector.inputSearcher.toLowerCase()
+            )
+            .filter((list) => list.dateSales === selector.date.selection)
+        : arrayResult00.filter(
+            (number) =>
+              number.itemName
+                .toLowerCase()
+                .slice(0, selector.inputSearcher.length) ==
+              selector.inputSearcher.toLowerCase()
+          );
 
     return result;
   },
