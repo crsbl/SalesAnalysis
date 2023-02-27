@@ -36,8 +36,6 @@ const functionShowProducts = {
                               ? listTypesProducts.id
                               : selector.productTypeCombobox.selection)
                           ) {
-
-
                             arrayResult00.push({
                               dateSales: listSales.date,
                               itemName: listItems.name,
@@ -59,43 +57,32 @@ const functionShowProducts = {
       });
     });
 
-    let result = [];
     let start = new Date(selector.date.startDate);
     let finish = new Date(selector.date.finishDate);
 
-    if (selector.date.state == true) {
-      result = arrayResult00
-        .filter(
-          (number) =>
-            number.itemName
-              .toLowerCase()
-              .slice(0, selector.inputSearcher.length) ==
-            selector.inputSearcher.toLowerCase()
-        )
-        .filter(
-          (list) =>
-            start.getTime() <=  new Date(list.dateSales).getTime()   &&
-          new Date(list.dateSales).getTime() <= finish.getTime()  
-       
-        );
-    } else {
-      result = arrayResult00.filter(
-        (number) =>
-          number.itemName
-            .toLowerCase()
-            .slice(0, selector.inputSearcher.length) ==
-          selector.inputSearcher.toLowerCase()
+    arrayResult00 = arrayResult00.filter(
+      (number) =>
+        number.itemName.toLowerCase().slice(0, selector.inputSearcher.length) ==
+        selector.inputSearcher.toLowerCase()
+    );
+
+    if (selector.date.state === true) {
+      arrayResult00 = arrayResult00.filter(
+        (list) =>
+          start.getTime() <= new Date(list.dateSales).getTime() &&
+          new Date(list.dateSales).getTime() <= finish.getTime()
       );
     }
 
-    if (start.toDateString() == finish.toDateString()) {
-      console.log("son iguales");
-    } else {
-      console.log("no iguales");
-      console.log(start, finish);
+    if (selector.price.state === true) {
+      arrayResult00 = arrayResult00.filter(
+        (list) =>
+          parseInt(selector.price.startPrice) <= parseInt(list.itemPrice) &&
+          parseInt(list.itemPrice) <= parseInt(selector.price.finishPrice)
+      );
     }
 
-    return result;
+    return arrayResult00;
   },
 };
 

@@ -15,6 +15,11 @@ const estadoInicial = {
     finishDate: `${year}-${month}-${day}`,
     state: false,
   },
+  price: {
+    startPrice: 0,
+    finishPrice: 0,
+    state: false,
+  },
   productTypeCombobox: {
     state: false,
     selection: -1,
@@ -99,6 +104,21 @@ function rootReducer(state = estadoInicial, accion) {
       return {
         ...state,
         date: { ...state.date, state: accion.payload },
+      };
+      case typeState.CHANGE_INPUT_START_PRICE:
+        return {
+          ...state,
+          price: { ...state.price, startPrice: accion.payload },
+        };
+      case typeState.CHANGE_INPUT_FINISH_PRICE:
+        return {
+          ...state,
+          price: { ...state.price, finishPrice: accion.payload },
+        };
+    case typeState.CHANGE_INPUT_CHECKBOX_PRICE:
+      return {
+        ...state,
+        price: { ...state.price, state: accion.payload },
       };
     default:
       return state;

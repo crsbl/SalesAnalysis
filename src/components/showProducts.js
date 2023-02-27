@@ -49,17 +49,56 @@ const ShowProducts = ({ hookStateShowProducts }) => {
   useEffect(() => {
     dispatch({
       type: typeState.CHANGE_INPUT_START_DATE,
-      payload: functionShowProducts.filterShowProducts(selector).sort((a, b) => {
-        if (new Date(a.dateSales).getTime() > new Date(b.dateSales).getTime()) {
-          return 1;
-        }
-        if (new Date(a.dateSales).getTime() < new Date(b.dateSales).getTime()) {
-          return -1;
-        }
-        return 0;
-      })[0].dateSales,
+      payload: functionShowProducts
+        .filterShowProducts(selector)
+        .sort((a, b) => {
+          if (
+            new Date(a.dateSales).getTime() > new Date(b.dateSales).getTime()
+          ) {
+            return 1;
+          }
+          if (
+            new Date(a.dateSales).getTime() < new Date(b.dateSales).getTime()
+          ) {
+            return -1;
+          }
+          return 0;
+        })[0].dateSales,
     });
-    
+  }, []);
+
+  useEffect(() => {
+    dispatch({
+      type: typeState.CHANGE_INPUT_START_PRICE,
+      payload: functionShowProducts
+        .filterShowProducts(selector)
+        .sort((a, b) => {
+          if (parseInt(a.itemPrice) > parseInt(b.itemPrice)) {
+            return 1;
+          }
+          if (parseInt(a.itemPrice) < parseInt(b.itemPrice)) {
+            return -1;
+          }
+          return 0;
+        })[0].itemPrice,
+    });
+  }, []);
+
+  useEffect(() => {
+    dispatch({
+      type: typeState.CHANGE_INPUT_FINISH_PRICE,
+      payload: functionShowProducts
+        .filterShowProducts(selector)
+        .sort((a, b) => {
+          if (parseInt(a.itemPrice) < parseInt(b.itemPrice)) {
+            return 1;
+          }
+          if (parseInt(a.itemPrice) > parseInt(b.itemPrice)) {
+            return -1;
+          }
+          return 0;
+        })[0].itemPrice,
+    });
   }, []);
 
   return (
@@ -211,8 +250,7 @@ const ShowProducts = ({ hookStateShowProducts }) => {
 
       <div>
         <div>
-          <h3> rango de fechas</h3>
-          <input
+        <input
             defaultChecked={selector.date.state}
             onChange={() => {
               if (selector.date.state === true) {
@@ -229,51 +267,119 @@ const ShowProducts = ({ hookStateShowProducts }) => {
             }}
             type="checkbox"
           ></input>
+          <h3> rango en fechas</h3>
         </div>
+        <div
+          style={
+            selector.date.state ? { display: "flex" } : { display: "none" }
+          }
+        >
+          <div>
+            <h3>Inicio</h3>
+            <input
+              value={selector.date.startDate}
+              onChange={(e) => {
+                if (
+                  new Date(selector.date.finishDate).getTime() <
+                  new Date(e.currentTarget.value).getTime()
+                ) {
+                  alert("Fecha de inicio no puede ser mayor a fecha fin");
+                } else {
+                  dispatch({
+                    type: typeState.CHANGE_INPUT_START_DATE,
+                    payload: e.currentTarget.value,
+                  });
+                }
+              }}
+              disabled={selector.date.state ? false : true}
+              type="date"
+              data-date-format="DD MMMM YYYY"
+            ></input>
+          </div>
+          <div>
+            <h3>Fin</h3>
+            <input
+              value={selector.date.finishDate}
+              onChange={(e) => {
+                if (
+                  new Date(selector.date.startDate).getTime() >
+                  new Date(e.currentTarget.value).getTime()
+                ) {
+                  alert("Fecha fin no puede ser menor a fecha inicio");
+                } else {
+                  dispatch({
+                    type: typeState.CHANGE_INPUT_FINISH_DATE,
+                    payload: e.currentTarget.value,
+                  });
+                }
+              }}
+              disabled={selector.date.state ? false : true}
+              type="date"
+              data-date-format="DD MMMM YYYY"
+            ></input>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div>
+        <input
+            defaultChecked={selector.price.state}
+            onChange={() => {
+              if (selector.price.state === true) {
+                dispatch({
+                  type: typeState.CHANGE_INPUT_CHECKBOX_PRICE,
+                  payload: false,
+                });
+              } else {
+                dispatch({
+                  type: typeState.CHANGE_INPUT_CHECKBOX_PRICE,
+                  payload: true,
+                });
+              }
+            }}
+            type="checkbox"
+          ></input>
+          <h3> rango en precios</h3>             
+        </div>
+<div style={selector.price.state ? {display:"flex"} : {display:"none"}}>
         <div>
           <h3>Inicio</h3>
           <input
-            value={selector.date.startDate}
+            value={selector.price.startPrice}
             onChange={(e) => {
+              console.log(e.currentTarget.value.length);
+
               if (
-                new Date(selector.date.finishDate).getTime() <
-                new Date(e.currentTarget.value).getTime()
+                parseInt(selector.price.finishPrice) <
+                parseInt(e.currentTarget.value)
               ) {
-                alert("Fecha de inicio no puede ser mayor a fecha fin");
+                alert("Precio de inicio no puede ser mayor a precio fin");
               } else {
                 dispatch({
-                  type: typeState.CHANGE_INPUT_START_DATE,
+                  type: typeState.CHANGE_INPUT_START_PRICE,
                   payload: e.currentTarget.value,
                 });
               }
             }}
-            disabled={selector.date.state ? false : true}
-            type="date"
-            data-date-format="DD MMMM YYYY"
+            disabled={selector.price.state ? false : true}
+            type="number"
           ></input>
         </div>
-
         <div>
           <h3>Fin</h3>
           <input
-            value={selector.date.finishDate}
+            value={selector.price.finishPrice}
             onChange={(e) => {
-              if (
-                new Date(selector.date.startDate).getTime() >
-                new Date(e.currentTarget.value).getTime()
-              ) {
-                alert("Fecha fin no puede ser menor a fecha inicio-------");
-              } else {
-                dispatch({
-                  type: typeState.CHANGE_INPUT_FINISH_DATE,
-                  payload: e.currentTarget.value,
-                });
-              }
+              dispatch({
+                type: typeState.CHANGE_INPUT_FINISH_PRICE,
+                payload: e.currentTarget.value,
+              });
             }}
-            disabled={selector.date.state ? false : true}
-            type="date"
-            data-date-format="DD MMMM YYYY"
+            disabled={selector.price.state ? false : true}
+            type="number"
           ></input>
+        </div>
         </div>
       </div>
     </div>
