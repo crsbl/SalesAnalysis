@@ -1,3 +1,7 @@
+:root {
+  --my-color: rgb(77, 78, 78);
+}
+
 
 
 header{
@@ -26,7 +30,7 @@ main > section{
   align-items: center;
 
 
-border:solid .1rem green;
+/* border:solid .1rem green; */
 }
 
 main > section > h2{

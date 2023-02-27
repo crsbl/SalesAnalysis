@@ -1,29 +1,104 @@
-
-main > section:nth-child(1){
-    
-  }
-.divContainerShowProducts00{
-    display: flex;
-    flex-flow: column nowrap;
-    gap:1rem;
-    align-items: center;
-    font-family: Montserrat, sans-serif;
+main > section:nth-child(1) {
 }
-
-  .divContainerShowProducts00 > div > div  {
-
+.divContainerShowProducts00 {
   display: flex;
   flex-flow: column nowrap;
+  gap: 1rem;
+  align-items: center;
+  font-family: Montserrat, sans-serif;
+}
+
+.divContainerShowProducts00 > div:nth-child(3)  {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.divContainerShowProducts00 > div:nth-child(3) > input  {
+  cursor: pointer;
+}
+
+.divContainerShowProducts00 > div:nth-child(3) >div:nth-child(3) {
+  border-left:solid var(--my-color00) .1rem;
+  border-right: solid var(--my-color00) .1rem;
+  border-bottom: solid var(--my-color00) .1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
+
+.divContainerShowProducts00 > div:nth-child(3) >div:nth-child(3) >h3:hover {
+  background-color: var(--my-color01);
+  cursor: pointer;
   }
 
-  .divContainerShowProducts00 > div:nth-child(6) > div:nth-child(1)   {
-    display: flex;
-    flex-flow: row nowrap;
-    gap: .5rem;
-    }
+.divContainerShowProducts00 > div:nth-child(4)  {
+  display: flex;
+  flex-flow: column nowrap;
+}
 
-    .divContainerShowProducts00 > div:nth-child(7) > div:nth-child(1)   {
-      display: flex;
-      flex-flow: row nowrap;
-      gap: .5rem;
-      }
+.divContainerShowProducts00 > div:nth-child(4) > input  {
+  cursor: pointer;
+}
+
+.divContainerShowProducts00 > div:nth-child(4) >div:nth-child(3)  {
+  border-left:solid var(--my-color00) .1rem;
+  border-right: solid var(--my-color00) .1rem;
+  border-bottom: solid var(--my-color00) .1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
+
+.divContainerShowProducts00 > div:nth-child(4) >div:nth-child(3) >h3:hover {
+  background-color: var(--my-color01);
+  cursor: pointer;
+  }
+
+.divContainerShowProducts00 > div:nth-child(5)  {
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
+
+.divContainerShowProducts00 > div:nth-child(5) > input  {
+  cursor: pointer;
+}
+
+.divContainerShowProducts00 > div:nth-child(5) >div:nth-child(3)  {
+  border-left:solid var(--my-color00) .1rem;
+  border-right: solid var(--my-color00) .1rem;
+  border-bottom: solid var(--my-color00) .1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
+
+.divContainerShowProducts00 > div:nth-child(5) >div:nth-child(3) >h3:hover {
+background-color: var(--my-color01);
+cursor: pointer;
+}
+
+
+
+.divContainerShowProducts00 > div:nth-child(6) > div:nth-child(1) {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.5rem;
+}
+.divContainerShowProducts00 > div:nth-child(6) > div:nth-child(2) {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
+
+
+.divContainerShowProducts00 > div:nth-child(7) > div:nth-child(1) {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.5rem;
+}
+
+.divContainerShowProducts00 > div:nth-child(7) > div:nth-child(2) {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
