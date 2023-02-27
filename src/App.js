@@ -1,25 +1,9 @@
 import "./App.css";
 import ShowProducts from "./components/showProducts";
-import SalesView from './components/salesView';
-import { useState } from "react";
+import SalesView from "./components/salesView";
+import AnalysisData from "./components/analysisData";
 
 function App() {
-  const [stateShowProducts, setStateShowProducts] = useState({
-    inputSearcher: "",
-    productTypeCombobox: {
-      state: false,
-      selection: 0,
-    },
-    productBrandCombobox: {
-      state: false,
-      selection: 0,
-    },
-    sellersCombobox: {
-      state: false,
-      selection: 0,
-    },
-  });
-
   return (
     <div className="App">
       <header>
@@ -27,12 +11,11 @@ function App() {
       </header>
       <main>
         <section>
-          <ShowProducts
-            hookStateShowProducts={[stateShowProducts, setStateShowProducts]}
-          />
+          <ShowProducts />
+          <AnalysisData />
         </section>
         <section>
-          <SalesView/>
+          <SalesView />
         </section>
       </main>
     </div>

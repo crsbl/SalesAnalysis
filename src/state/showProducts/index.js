@@ -32,6 +32,10 @@ const estadoInicial = {
     state: false,
     selection: -1,
   },
+  organizeByComboBox: {
+    state: false,
+    selection: 0,
+  },
 };
 
 function rootReducer(state = estadoInicial, accion) {
@@ -105,21 +109,37 @@ function rootReducer(state = estadoInicial, accion) {
         ...state,
         date: { ...state.date, state: accion.payload },
       };
-      case typeState.CHANGE_INPUT_START_PRICE:
-        return {
-          ...state,
-          price: { ...state.price, startPrice: accion.payload },
-        };
-      case typeState.CHANGE_INPUT_FINISH_PRICE:
-        return {
-          ...state,
-          price: { ...state.price, finishPrice: accion.payload },
-        };
+    case typeState.CHANGE_INPUT_START_PRICE:
+      return {
+        ...state,
+        price: { ...state.price, startPrice: accion.payload },
+      };
+    case typeState.CHANGE_INPUT_FINISH_PRICE:
+      return {
+        ...state,
+        price: { ...state.price, finishPrice: accion.payload },
+      };
     case typeState.CHANGE_INPUT_CHECKBOX_PRICE:
       return {
         ...state,
         price: { ...state.price, state: accion.payload },
       };
+    case typeState.CHANGE_SELECTION_ORGANIZE_BY_COMBOBOX:
+      return {
+        ...state,
+        organizeByComboBox: {
+          ...state.organizeByComboBox,
+          selection: accion.payload,
+        },
+      };
+      case typeState.CHANGE_STATE_ORGANIZE_BY_COMBOBOX:
+        return {
+          ...state,
+          organizeByComboBox: {
+            ...state.organizeByComboBox,
+            state: accion.payload,
+          },
+        };
     default:
       return state;
   }

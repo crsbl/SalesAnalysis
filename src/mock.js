@@ -59,14 +59,14 @@ const mock = () => {
       id: 5,
       idtypeProduct: 2,
       idProductBrand: 2,
-      name: "jeans mujer",
+      name: "Jeans mujer",
       price: 38900,
     },
     {
       id: 6,
       idtypeProduct: 2,
       idProductBrand: 2,
-      name: "jeans hombre",
+      name: "Jeans hombre",
       price: 31750,
     },
     {

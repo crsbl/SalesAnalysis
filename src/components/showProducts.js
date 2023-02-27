@@ -5,13 +5,18 @@ import functionShowProducts from "../functions/functionShowProducts";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-const ShowProducts = ({ hookStateShowProducts }) => {
+const ShowProducts = () => {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state.showProducts);
 
   let arrayTypesProducts = [...mock().typesProducts];
   let arrayProductBrand = [...mock().productBrand];
   let arraySellers = [...mock().sellers];
+  let arrayOrganizeBy = [
+    { id: 0, name: "Nombre producto" },
+    { id: 1, name: "Precio ascendente" },
+    { id: 2, name: "Precio descendente" },
+  ];
 
   arrayTypesProducts.unshift({ id: -1, name: "todos" });
   arrayProductBrand.unshift({ id: -1, name: "todas" });
@@ -21,6 +26,7 @@ const ShowProducts = ({ hookStateShowProducts }) => {
     inputProductType: "",
     inputProductBrandCombobox: "",
     inputSellersCombobox: "",
+    inputorganizeByCombobox: ""
   });
 
   useEffect(() => {
@@ -34,16 +40,22 @@ const ShowProducts = ({ hookStateShowProducts }) => {
       return list.id == selector.sellersCombobox.selection;
     }).name;
 
+ let input03 = arrayOrganizeBy.find((list) => {
+      return list.id == selector.organizeByComboBox.selection;
+    }).name;
+
     setInputsCombobox({
       inputProductType: input00,
       inputProductBrandCombobox: input01,
       inputSellersCombobox: input02,
+      inputorganizeByCombobox:input03
     });
     console.log(selector.date);
   }, [
     selector.productTypeCombobox.selection,
     selector.productBrandCombobox.selection,
     selector.sellersCombobox.selection,
+    selector.organizeByComboBox.selection
   ]);
 
   useEffect(() => {
@@ -104,6 +116,7 @@ const ShowProducts = ({ hookStateShowProducts }) => {
   return (
     <div className="divContainerShowProducts00">
       <h2>Mostrar productos</h2>
+
       <div>
         <h3>Buscar producto</h3>
         <input
@@ -116,6 +129,7 @@ const ShowProducts = ({ hookStateShowProducts }) => {
           }}
         ></input>
       </div>
+
       <div>
         <h3>Categoria</h3>
         <input
@@ -250,7 +264,7 @@ const ShowProducts = ({ hookStateShowProducts }) => {
 
       <div>
         <div>
-        <input
+          <input
             defaultChecked={selector.date.state}
             onChange={() => {
               if (selector.date.state === true) {
@@ -323,7 +337,7 @@ const ShowProducts = ({ hookStateShowProducts }) => {
 
       <div>
         <div>
-        <input
+          <input
             defaultChecked={selector.price.state}
             onChange={() => {
               if (selector.price.state === true) {
@@ -340,46 +354,94 @@ const ShowProducts = ({ hookStateShowProducts }) => {
             }}
             type="checkbox"
           ></input>
-          <h3> rango en precios</h3>             
+          <h3> rango en precios</h3>
         </div>
-<div style={selector.price.state ? {display:"flex"} : {display:"none"}}>
-        <div>
-          <h3>Inicio</h3>
-          <input
-            value={selector.price.startPrice}
-            onChange={(e) => {
-              console.log(e.currentTarget.value.length);
+        <div
+          style={
+            selector.price.state ? { display: "flex" } : { display: "none" }
+          }
+        >
+          <div>
+            <h3>Inicio</h3>
+            <input
+              value={selector.price.startPrice}
+              onChange={(e) => {
+                console.log(e.currentTarget.value.length);
 
-              if (
-                parseInt(selector.price.finishPrice) <
-                parseInt(e.currentTarget.value)
-              ) {
-                alert("Precio de inicio no puede ser mayor a precio fin");
-              } else {
+                if (
+                  parseInt(selector.price.finishPrice) <
+                  parseInt(e.currentTarget.value)
+                ) {
+                  alert("Precio de inicio no puede ser mayor a precio fin");
+                } else {
+                  dispatch({
+                    type: typeState.CHANGE_INPUT_START_PRICE,
+                    payload: e.currentTarget.value,
+                  });
+                }
+              }}
+              disabled={selector.price.state ? false : true}
+              type="number"
+            ></input>
+          </div>
+          <div>
+            <h3>Fin</h3>
+            <input
+              value={selector.price.finishPrice}
+              onChange={(e) => {
                 dispatch({
-                  type: typeState.CHANGE_INPUT_START_PRICE,
+                  type: typeState.CHANGE_INPUT_FINISH_PRICE,
                   payload: e.currentTarget.value,
                 });
-              }
-            }}
-            disabled={selector.price.state ? false : true}
-            type="number"
-          ></input>
+              }}
+              disabled={selector.price.state ? false : true}
+              type="number"
+            ></input>
+          </div>
         </div>
-        <div>
-          <h3>Fin</h3>
-          <input
-            value={selector.price.finishPrice}
-            onChange={(e) => {
-              dispatch({
-                type: typeState.CHANGE_INPUT_FINISH_PRICE,
-                payload: e.currentTarget.value,
-              });
-            }}
-            disabled={selector.price.state ? false : true}
-            type="number"
-          ></input>
-        </div>
+      </div>
+
+      <div>
+        <h3>Ordenar por</h3>
+        <input
+        value={inputsCombobox.inputorganizeByCombobox} 
+          onClick={() => {
+            selector.organizeByComboBox.state
+              ? dispatch({
+                  type: typeState.CHANGE_STATE_ORGANIZE_BY_COMBOBOX,
+                  payload: false,
+                })
+              : dispatch({
+                  type: typeState.CHANGE_STATE_ORGANIZE_BY_COMBOBOX,
+                  payload: true,
+                });
+          }} 
+        ></input>
+        <div
+           style={
+            selector.organizeByComboBox.state
+              ? { display: "flex" }
+              : { display: "none" }
+          } 
+        >
+          {arrayOrganizeBy.map((listOrganizeBy) => {
+            return (
+              <h3
+               onClick={() => {
+                  dispatch({
+                    type: typeState.CHANGE_STATE_ORGANIZE_BY_COMBOBOX,
+                    payload: false,
+                  });
+                  dispatch({
+                    type: typeState.CHANGE_SELECTION_ORGANIZE_BY_COMBOBOX,
+                    payload: listOrganizeBy.id,
+                  });
+                }}
+              >
+                {listOrganizeBy.name}
+              </h3>
+            );
+          })}
         </div>
       </div>
     </div>

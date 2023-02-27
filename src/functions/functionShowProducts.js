@@ -82,6 +82,46 @@ const functionShowProducts = {
       );
     }
 
+    switch (selector.organizeByComboBox.selection) {
+      case 0:
+        arrayResult00 = arrayResult00.sort((a, b) => {
+          if (a.itemName > b.itemName) {
+            return 1;
+          }
+          if (a.itemName < b.itemName) {
+            return -1;
+          }
+          return 0;
+        });
+        break;
+      case 1:
+        arrayResult00 = arrayResult00.sort((a, b) => {
+          if (parseInt(a.itemPrice) > parseInt(b.itemPrice)) {
+            return 1;
+          }
+          if (parseInt(a.itemPrice) < parseInt(b.itemPrice)) {
+            return -1;
+          }
+          return 0;
+        });
+        break;
+      case 2:
+        arrayResult00 = arrayResult00.sort((a, b) => {
+          if (parseInt(a.itemPrice) < parseInt(b.itemPrice)) {
+            return 1;
+          }
+          if (parseInt(a.itemPrice) > parseInt(b.itemPrice)) {
+            return -1;
+          }
+          return 0;
+        });
+        break;
+      case 3:
+        break;
+      default:
+        break;
+    }
+
     return arrayResult00;
   },
 };

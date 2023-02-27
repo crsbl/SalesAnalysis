@@ -102,3 +102,21 @@ cursor: pointer;
   flex-flow: column nowrap;
   gap: 0.5rem;
 }
+
+.divContainerShowProducts00 > div:nth-child(8) >div:nth-child(3)  {
+  border-left:solid var(--my-color00) .1rem;
+  border-right: solid var(--my-color00) .1rem;
+  border-bottom: solid var(--my-color00) .1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
+
+.divContainerShowProducts00 > div:nth-child(8) >div:nth-child(3) >h3:hover {
+  background-color: var(--my-color01);
+  cursor: pointer;
+  }
+
+  .divContainerShowProducts00 > div:nth-child(8) > input  {
+    cursor: pointer;
+  }
