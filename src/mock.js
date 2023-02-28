@@ -4,6 +4,9 @@ const mock = () => {
     { id: 1, name: "Sony" },
     { id: 2, name: "Polemic" },
     { id: 3, name: "Dc" },
+    { id: 4, name: "Spitfire" },
+    { id: 5, name: "Ehpale" },
+    { id: 6, name: "Casa Pewu" },
   ];
 
   const sellers = [
@@ -83,6 +86,41 @@ const mock = () => {
       name: "Audifonos",
       price: 12200,
     },
+    {
+      id: 9,
+      idtypeProduct: 1,
+      idProductBrand: 5,
+      name: "Sofá 3 cuerpos ",
+      price: 80200,
+    },
+    {
+      id: 10,
+      idtypeProduct: 1,
+      idProductBrand: 5,
+      name: "Silla nativa cuero",
+      price: 45200,
+    },
+    {
+      id: 11,
+      idtypeProduct: 1,
+      idProductBrand: 6,
+      name: "Mesa comedor",
+      price: 97560,
+    },
+    {
+      id: 12,
+      idtypeProduct: 1,
+      idProductBrand: 6,
+      name: "Silla terraza",
+      price: 74800,
+    },
+    {
+      id: 13,
+      idtypeProduct: 1,
+      idProductBrand: 6,
+      name: "Sillon",
+      price: 128000,
+    },
   ];
 
   const sales = [
@@ -97,6 +135,11 @@ const mock = () => {
     { sellersId: 0, itemsId: 8, date: "2023-02-02" },
     { sellersId: 1, itemsId: 1, date: "2023-02-03" },
     { sellersId: 1, itemsId: 1, date: "2023-02-04" },
+    { sellersId: 2, itemsId: 9, date: "2023-02-22" },
+    { sellersId: 1, itemsId: 10, date: "2023-02-02" },
+    { sellersId: 0, itemsId: 12, date: "2023-02-02" },
+    { sellersId: 1, itemsId: 11, date: "2023-02-03" },
+    { sellersId: 1, itemsId: 13, date: "2023-02-04" },
   ];
 
   return {

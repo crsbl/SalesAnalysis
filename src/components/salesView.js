@@ -46,9 +46,9 @@ const SalesView = () => {
       <div>
       <h3>Total:</h3>
       <h3>
-        {functionShowProducts
+       ${functionShowProducts
           .filterShowProducts(selector)
-          .reduce((acc, Value) => (acc += Value.itemPrice), 0)}
+          .reduce((acc, Value) => (acc += Value.itemPrice), 0).toLocaleString("de-DE")}
       </h3>
     </div>
 
