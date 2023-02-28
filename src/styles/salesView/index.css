@@ -8,6 +8,9 @@
 .divContainerSalesView00 > div:nth-child(1) {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: start;
+
+
   gap: 1rem;
   padding: 0.3rem;
 }
@@ -109,6 +112,9 @@
   align-items:baseline;
   margin: 1rem 0 0 0;
   gap: 0.5rem;
+
+
+  
 }
 
 .divContainerSalesView01 > div:nth-child(1) {

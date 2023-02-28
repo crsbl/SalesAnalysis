@@ -1,5 +1,6 @@
 import mock from "../mock";
 import "../styles/showProducts/index.css";
+import "../styles/showProducts/indexResponsive.css";
 import typeState from "../state/showProducts/types";
 import functionShowProducts from "../functions/functionShowProducts";
 import { useDispatch, useSelector } from "react-redux";
@@ -366,8 +367,6 @@ const ShowProducts = () => {
             <input
               value={selector.price.startPrice}
               onChange={(e) => {
-                console.log(e.currentTarget.value.length);
-
                 if (
                   parseInt(selector.price.finishPrice) <
                   parseInt(e.currentTarget.value)

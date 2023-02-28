@@ -28,7 +28,7 @@ const SalesView = () => {
                 <h3>{listFilterShowProducts.sellername}</h3>
                 <h3>{listFilterShowProducts.TypesProductsName}</h3>
                 <h3>{listFilterShowProducts.productBrandName}</h3>
-                <h3>${listFilterShowProducts.itemPrice}</h3>
+                <h3>${listFilterShowProducts.itemPrice.toLocaleString("de-DE")}</h3>
               </div>
             );
           })}

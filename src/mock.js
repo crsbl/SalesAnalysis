@@ -7,9 +7,9 @@ const mock = () => {
   ];
 
   const sellers = [
-    { id: 0, taxNumber: "18.181.222-2", name: "Cristobal" },
-    { id: 1, taxNumber: "22.222.222-2", name: "Juanita" },
-    { id: 2, taxNumber: "18.181.222-2", name: "Andres" },
+    { id: 0, taxNumber: "18.181.222-2", name: "Cristobal Ortega" },
+    { id: 1, taxNumber: "22.222.222-2", name: "Juanita Perez" },
+    { id: 2, taxNumber: "18.181.222-2", name: "Andres Aviles" },
   ];
 
   const typesProducts = [
