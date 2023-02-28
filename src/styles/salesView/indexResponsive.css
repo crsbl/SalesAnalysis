@@ -1,0 +1,29 @@
+
+@media only screen and (max-width: 750px) {
+   
+    .divContainerSalesView00{
+     overflow: scroll; 
+    display: flex;
+    flex-flow: column wrap;
+      align-items: center;
+    } 
+    .divContainerSalesView00 > div:nth-child(2) > div > h3 {
+        font-family: Montserrat, sans-serif;
+  padding: 0.5rem;
+  overflow: hidden;
+  white-space:nowrap;
+  text-overflow:clip;
+
+      }
+
+      .divContainerSalesView00 > div:nth-child(2) {
+   /*     width: 120%;
+        overflow:auto;
+        padding: 0 1rem 0 0;
+        gap: 0.5rem; */
+      } 
+
+      .divContainerSalesView01 {
+        flex-flow: column nowrap;
+      }
+  }

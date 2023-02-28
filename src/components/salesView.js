@@ -1,11 +1,12 @@
 import "../styles/salesView/index.css";
+import "../styles/salesView/indexResponsive.css";
 import functionShowProducts from "../functions/functionShowProducts";
 import { useSelector } from "react-redux";
 
 const SalesView = () => {
   const selector = useSelector((state) => state.showProducts);
 
-  return (
+  return (<>
     <div className="divContainerSalesView00">
       <div>
         <h3>Fecha</h3>
@@ -33,26 +34,28 @@ const SalesView = () => {
           })}
       </div>
 
-      <div>
-      
-        <div>
-          <h3>Cantidad:</h3>
-          <h3>{functionShowProducts.filterShowProducts(selector).length}</h3>
-        </div>
-
-        <div>
-        <h3>Total:</h3>
-        <h3>
-          {functionShowProducts
-            .filterShowProducts(selector)
-            .reduce((acc, Value) => (acc += Value.itemPrice), 0)}
-        </h3>
-      </div>
-
-      </div>
-
-    
     </div>
+    
+    <div className="divContainerSalesView01">
+      
+      <div>
+        <h3>Cantidad:</h3>
+        <h3>{functionShowProducts.filterShowProducts(selector).length}</h3>
+      </div>
+
+      <div>
+      <h3>Total:</h3>
+      <h3>
+        {functionShowProducts
+          .filterShowProducts(selector)
+          .reduce((acc, Value) => (acc += Value.itemPrice), 0)}
+      </h3>
+    </div>
+
+    </div>
+    
+    
+    </>
   );
 };
 

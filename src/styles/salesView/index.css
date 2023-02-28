@@ -1,38 +1,49 @@
+.divContainerSalesView00 {
+  border: solid 0.1rem var(--my-color00);
+  padding: 0.2rem;
+  border-radius: .2rem;
+
+}
+
 .divContainerSalesView00 > div:nth-child(1) {
   display: flex;
   flex-flow: row nowrap;
   gap: 1rem;
-  background-color: rgb(236, 234, 234);
+  padding: 0.3rem;
 }
 .divContainerSalesView00 > div:nth-child(1) > h3 {
-  width: 7rem;
+  background-color: rgb(228, 228, 228);
+  border-radius: 0.3rem;
+  border: solid 0.1rem var(--my-color00);
   text-align: left;
   font-family: Montserrat, sans-serif;
   padding: 0.5rem;
+}
+.divContainerSalesView00 > div:nth-child(2) > div:nth-child(2n + 2) {
+  background-color: rgb(247, 244, 244);
 }
 .divContainerSalesView00 > div:nth-child(2) > div {
   display: flex;
   flex-flow: row nowrap;
   gap: 1rem;
+  border-bottom: solid 0.1rem var(--my-color00);
+  border-top: solid 0.1rem var(--my-color00);
+  padding: 0.3rem;
 }
-
 .divContainerSalesView00 > div:nth-child(2) {
-
   display: flex;
   flex-flow: column nowrap;
-  height: 20rem;
+  max-height: 25rem;
   overflow: scroll;
-  padding: 0 2rem 0 0;
-  gap: 1rem;
-  background-color: rgb(241, 241, 241);
+  padding: 0 1rem 0 0;
+  gap: 0.5rem;
 }
 
 .divContainerSalesView00 > div:nth-child(2)::-webkit-scrollbar-thumb {
-
-  background-color: rgb(206, 205, 204);
+  border: solid 0.1rem var(--my-color00);
+  background-color: rgb(231, 229, 228);
   border-radius: 0.2rem;
   transition: 1s;
-
 }
 
 .divContainerSalesView00 > div:nth-child(2)::-webkit-scrollbar {
@@ -42,39 +53,85 @@
   transition: 1s;
 }
 
-
 .divContainerSalesView00 > div:nth-child(2) > div > h3 {
   font-family: Montserrat, sans-serif;
-  width: 7rem;
   padding: 0.5rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  border-radius: 0.3rem;
+  border: solid 0.1rem var(--my-color00);
 }
-.divContainerSalesView00 > div:nth-child(3) {
-  display: flex;
-  flex-flow: row nowrap;
- margin: 1rem 0 0 0;
+.divContainerSalesView00 > div:nth-child(1) > h3:nth-child(1) {
+  width: 7rem;
+}
+.divContainerSalesView00 > div:nth-child(1) > h3:nth-child(2) {
+  width: 10rem;
+}
+.divContainerSalesView00 > div:nth-child(1) > h3:nth-child(3) {
+  width: 10rem;
+}
+.divContainerSalesView00 > div:nth-child(1) > h3:nth-child(4) {
+  width: 10rem;
+}
+.divContainerSalesView00 > div:nth-child(1) > h3:nth-child(5) {
+  width: 7rem;
+}
+.divContainerSalesView00 > div:nth-child(1) > h3:nth-child(6) {
+  width: 6rem;
+}
+.divContainerSalesView00 > div:nth-child(2) > div > h3:nth-child(1) {
+  width: 7rem;
+}
+.divContainerSalesView00 > div:nth-child(2) > div > h3:nth-child(2) {
+  width: 10rem;
 }
 
-.divContainerSalesView00 > div:nth-child(3) > div:nth-child(1) {
+.divContainerSalesView00 > div:nth-child(2) > div > h3:nth-child(3) {
+  width: 10rem;
+}
+
+.divContainerSalesView00 > div:nth-child(2) > div > h3:nth-child(4) {
+  width: 10rem;
+}
+
+.divContainerSalesView00 > div:nth-child(2) > div > h3:nth-child(5) {
+  width: 7rem;
+}
+
+.divContainerSalesView00 > div:nth-child(2) > div > h3:nth-child(6) {
+  width: 6rem;
+}
+
+.divContainerSalesView01 {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items:baseline;
+  margin: 1rem 0 0 0;
+  gap: 0.5rem;
+}
+
+.divContainerSalesView01 > div:nth-child(1) {
   display: flex;
   flex-flow: row nowrap;
   background-color: rgb(236, 236, 235);
+  border: solid 0.1rem var(--my-color00);
 }
 
-.divContainerSalesView00 > div:nth-child(3) > div:nth-child(2) {
+.divContainerSalesView01> div:nth-child(2) {
   display: flex;
   flex-flow: row nowrap;
   background-color: rgb(236, 236, 235);
+  border: solid 0.1rem var(--my-color00);
 }
 
-.divContainerSalesView00 > div:nth-child(3) > div:nth-child(1) > h3 {
+.divContainerSalesView01 > div:nth-child(1) > h3 {
   font-family: Montserrat, sans-serif;
   padding: 0.5rem;
+  font-size: 1.3rem;
 }
 
-.divContainerSalesView00 > div:nth-child(3) > div:nth-child(2) > h3 {
+.divContainerSalesView01 > div:nth-child(2) > h3 {
   font-family: Montserrat, sans-serif;
   padding: 0.5rem;
 }

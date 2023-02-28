@@ -1,0 +1,9 @@
+.divContainerAnalysisData00 {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+    align-items: center;
+    font-family: Montserrat, sans-serif;
+    border:solid .1rem var(--my-color00);
+    padding: 1rem;
+  }

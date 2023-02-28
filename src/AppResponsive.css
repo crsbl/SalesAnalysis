@@ -1,0 +1,8 @@
+@media only screen and (max-width: 750px) {
+  main {
+    flex-flow: column nowrap;
+  }
+  header {
+    padding: 1rem;
+  }
+}

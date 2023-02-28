@@ -115,7 +115,7 @@ const ShowProducts = () => {
 
   return (
     <div className="divContainerShowProducts00">
-      <h2>Mostrar productos</h2>
+      <h2>Filtros</h2>
 
       <div>
         <h3>Buscar producto</h3>
