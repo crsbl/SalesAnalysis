@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 html,
 body,
 #root,
@@ -9,15 +9,16 @@ body,
 }
 :root {
   --my-color00: rgb(181, 182, 182);
-  --my-color01:rgb(236, 233, 233);
+  --my-color01: rgb(236, 233, 233);
 }
-.App{
-display: flex;
-flex-flow: column nowrap;
-overflow: scroll;
+.App {
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: scroll;
 }
 
 * {
   margin: 0;
   padding: 0;
+  user-select: none;
 }

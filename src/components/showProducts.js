@@ -133,7 +133,7 @@ const ShowProducts = () => {
 
       <div>
         <h3>Categoria</h3>
-        <input
+        <input readOnly
           value={inputsCombobox.inputProductType}
           onClick={() => {
             selector.productTypeCombobox.state
@@ -177,7 +177,7 @@ const ShowProducts = () => {
 
       <div>
         <h3>Marcas</h3>
-        <input
+        <input readOnly
           value={inputsCombobox.inputProductBrandCombobox}
           onClick={() => {
             selector.productBrandCombobox.state
@@ -221,7 +221,7 @@ const ShowProducts = () => {
 
       <div>
         <h3>Vendedor</h3>
-        <input
+        <input readOnly
           value={inputsCombobox.inputSellersCombobox}
           onClick={() => {
             selector.sellersCombobox.state
@@ -385,7 +385,7 @@ const ShowProducts = () => {
           </div>
           <div>
             <h3>Fin</h3>
-            <input
+            <input 
               value={selector.price.finishPrice}
               onChange={(e) => {
                 dispatch({
@@ -402,7 +402,7 @@ const ShowProducts = () => {
 
       <div>
         <h3>Ordenar por</h3>
-        <input
+        <input readOnly
         value={inputsCombobox.inputorganizeByCombobox} 
           onClick={() => {
             selector.organizeByComboBox.state
