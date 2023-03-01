@@ -4,6 +4,7 @@ import ShowProducts from "./components/showProducts";
 import SalesView from "./components/salesView";
 import AnalysisData from "./components/analysisData";
 import imgAnalysis from './img/scanning_icon.svg'
+import objectData from './mock.js';
 
 function App() {
   return (
@@ -11,6 +12,10 @@ function App() {
       <header>
         <img src={imgAnalysis}></img>
         <h3>Analisis de ventas en proceso</h3>
+        <button onClick={(()=>{
+          console.log(objectData())
+        })}>Objeto en consola</button>
+        
       </header>
       <main>
         <section>

@@ -14,6 +14,7 @@ const estadoInicial = {
     startDate: `${year}-${month}-${day}`,
     finishDate: `${year}-${month}-${day}`,
     state: false,
+    type: false,
   },
   price: {
     startPrice: 0,
@@ -39,7 +40,6 @@ const estadoInicial = {
 };
 
 function rootReducer(state = estadoInicial, accion) {
-  console.log(accion);
   switch (accion.type) {
     case typeState.CHANGE_STATE_PRODUCT_TYPE_COMBOBOX:
       return {

@@ -51,7 +51,6 @@ const ShowProducts = () => {
       inputSellersCombobox: input02,
       inputorganizeByCombobox:input03
     });
-    console.log(selector.date);
   }, [
     selector.productTypeCombobox.selection,
     selector.productBrandCombobox.selection,
@@ -154,9 +153,9 @@ const ShowProducts = () => {
               : { display: "none" }
           }
         >
-          {arrayTypesProducts.map((listTypesProducts) => {
+          {arrayTypesProducts.map((listTypesProducts, index) => {
             return (
-              <h3
+              <h3 key={index}
                 onClick={() => {
                   dispatch({
                     type: typeState.CHANGE_STATE_PRODUCT_TYPE_COMBOBOX,
@@ -198,9 +197,10 @@ const ShowProducts = () => {
               : { display: "none" }
           }
         >
-          {arrayProductBrand.map((listTypesProducts) => {
+          {arrayProductBrand.map((listTypesProducts, index) => {
             return (
               <h3
+              key={index}
                 onClick={() => {
                   dispatch({
                     type: typeState.CHANGE_STATE_PRODUCT_BRAND_COMBOBOX,
@@ -242,9 +242,9 @@ const ShowProducts = () => {
               : { display: "none" }
           }
         >
-          {arraySellers.map((listTypesProducts) => {
+          {arraySellers.map((listTypesProducts, index) => {
             return (
-              <h3
+              <h3 key={index}
                 onClick={() => {
                   dispatch({
                     type: typeState.CHANGE_STATE_SELLERS_COMBOBOX,
@@ -423,9 +423,9 @@ const ShowProducts = () => {
               : { display: "none" }
           } 
         >
-          {arrayOrganizeBy.map((listOrganizeBy) => {
+          {arrayOrganizeBy.map((listOrganizeBy, index) => {
             return (
-              <h3
+              <h3 key={index}
                onClick={() => {
                   dispatch({
                     type: typeState.CHANGE_STATE_ORGANIZE_BY_COMBOBOX,

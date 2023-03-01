@@ -20,9 +20,9 @@ const SalesView = () => {
       <div>
         {functionShowProducts
           .filterShowProducts(selector)
-          .map((listFilterShowProducts) => {
+          .map((listFilterShowProducts, index) => {
             return (
-              <div>
+              <div key={index}>
                 <h3>{listFilterShowProducts.dateSales}</h3>
                 <h3>{listFilterShowProducts.itemName}</h3>
                 <h3>{listFilterShowProducts.sellername}</h3>
