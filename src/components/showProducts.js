@@ -27,7 +27,7 @@ const ShowProducts = () => {
     inputProductType: "",
     inputProductBrandCombobox: "",
     inputSellersCombobox: "",
-    inputorganizeByCombobox: ""
+    inputorganizeByCombobox: "",
   });
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const ShowProducts = () => {
       return list.id == selector.sellersCombobox.selection;
     }).name;
 
- let input03 = arrayOrganizeBy.find((list) => {
+    let input03 = arrayOrganizeBy.find((list) => {
       return list.id == selector.organizeByComboBox.selection;
     }).name;
 
@@ -49,13 +49,13 @@ const ShowProducts = () => {
       inputProductType: input00,
       inputProductBrandCombobox: input01,
       inputSellersCombobox: input02,
-      inputorganizeByCombobox:input03
+      inputorganizeByCombobox: input03,
     });
   }, [
     selector.productTypeCombobox.selection,
     selector.productBrandCombobox.selection,
     selector.sellersCombobox.selection,
-    selector.organizeByComboBox.selection
+    selector.organizeByComboBox.selection,
   ]);
 
   useEffect(() => {
@@ -113,6 +113,24 @@ const ShowProducts = () => {
     });
   }, []);
 
+  const changeStateFilters = (state, type) => {
+    let arrayType = [
+      typeState.CHANGE_STATE_PRODUCT_TYPE_COMBOBOX,
+      typeState.CHANGE_STATE_PRODUCT_BRAND_COMBOBOX,
+      typeState.CHANGE_STATE_SELLERS_COMBOBOX,
+      typeState.CHANGE_STATE_ORGANIZE_BY_COMBOBOX,
+    ];
+
+    arrayType
+      .filter((listArrayType) => listArrayType !== type)
+      .forEach((listType) => {
+        dispatch({
+          type: listType,
+          payload: state,
+        });
+      });
+  };
+
   return (
     <div className="divContainerShowProducts00">
       <h2>Filtros</h2>
@@ -130,9 +148,10 @@ const ShowProducts = () => {
         ></input>
       </div>
 
-      <div>
+      <div >
         <h3>Categoria</h3>
-        <input readOnly
+        <input
+          readOnly
           value={inputsCombobox.inputProductType}
           onClick={() => {
             selector.productTypeCombobox.state
@@ -144,6 +163,8 @@ const ShowProducts = () => {
                   type: typeState.CHANGE_STATE_PRODUCT_TYPE_COMBOBOX,
                   payload: true,
                 });
+
+                changeStateFilters(false, typeState.CHANGE_STATE_PRODUCT_TYPE_COMBOBOX);
           }}
         ></input>
         <div
@@ -155,7 +176,8 @@ const ShowProducts = () => {
         >
           {arrayTypesProducts.map((listTypesProducts, index) => {
             return (
-              <h3 key={index}
+              <h3
+                key={index}
                 onClick={() => {
                   dispatch({
                     type: typeState.CHANGE_STATE_PRODUCT_TYPE_COMBOBOX,
@@ -176,7 +198,8 @@ const ShowProducts = () => {
 
       <div>
         <h3>Marcas</h3>
-        <input readOnly
+        <input
+          readOnly
           value={inputsCombobox.inputProductBrandCombobox}
           onClick={() => {
             selector.productBrandCombobox.state
@@ -188,6 +211,7 @@ const ShowProducts = () => {
                   type: typeState.CHANGE_STATE_PRODUCT_BRAND_COMBOBOX,
                   payload: true,
                 });
+                changeStateFilters(false, typeState.CHANGE_STATE_PRODUCT_BRAND_COMBOBOX);
           }}
         ></input>
         <div
@@ -200,7 +224,7 @@ const ShowProducts = () => {
           {arrayProductBrand.map((listTypesProducts, index) => {
             return (
               <h3
-              key={index}
+                key={index}
                 onClick={() => {
                   dispatch({
                     type: typeState.CHANGE_STATE_PRODUCT_BRAND_COMBOBOX,
@@ -221,7 +245,8 @@ const ShowProducts = () => {
 
       <div>
         <h3>Vendedor</h3>
-        <input readOnly
+        <input
+          readOnly
           value={inputsCombobox.inputSellersCombobox}
           onClick={() => {
             selector.sellersCombobox.state
@@ -233,6 +258,8 @@ const ShowProducts = () => {
                   type: typeState.CHANGE_STATE_SELLERS_COMBOBOX,
                   payload: true,
                 });
+
+                changeStateFilters(false, typeState.CHANGE_STATE_SELLERS_COMBOBOX);
           }}
         ></input>
         <div
@@ -244,7 +271,8 @@ const ShowProducts = () => {
         >
           {arraySellers.map((listTypesProducts, index) => {
             return (
-              <h3 key={index}
+              <h3
+                key={index}
                 onClick={() => {
                   dispatch({
                     type: typeState.CHANGE_STATE_SELLERS_COMBOBOX,
@@ -268,6 +296,7 @@ const ShowProducts = () => {
           <input
             defaultChecked={selector.date.state}
             onChange={() => {
+              changeStateFilters(false, typeState.CHANGE_INPUT_CHECKBOX_DATE);
               if (selector.date.state === true) {
                 dispatch({
                   type: typeState.CHANGE_INPUT_CHECKBOX_DATE,
@@ -278,11 +307,12 @@ const ShowProducts = () => {
                   type: typeState.CHANGE_INPUT_CHECKBOX_DATE,
                   payload: true,
                 });
+               
               }
             }}
             type="checkbox"
           ></input>
-          <h3> rango en fechas</h3>
+          <h3> Rango en fechas</h3>
         </div>
         <div
           style={
@@ -341,6 +371,7 @@ const ShowProducts = () => {
           <input
             defaultChecked={selector.price.state}
             onChange={() => {
+              changeStateFilters(false, typeState.CHANGE_INPUT_CHECKBOX_PRICE);
               if (selector.price.state === true) {
                 dispatch({
                   type: typeState.CHANGE_INPUT_CHECKBOX_PRICE,
@@ -352,10 +383,11 @@ const ShowProducts = () => {
                   payload: true,
                 });
               }
+             
             }}
             type="checkbox"
           ></input>
-          <h3> rango en precios</h3>
+          <h3> Rango en precios</h3>
         </div>
         <div
           style={
@@ -385,7 +417,7 @@ const ShowProducts = () => {
           </div>
           <div>
             <h3>Fin</h3>
-            <input 
+            <input
               value={selector.price.finishPrice}
               onChange={(e) => {
                 dispatch({
@@ -402,8 +434,9 @@ const ShowProducts = () => {
 
       <div>
         <h3>Ordenar por</h3>
-        <input readOnly
-        value={inputsCombobox.inputorganizeByCombobox} 
+        <input
+          readOnly
+          value={inputsCombobox.inputorganizeByCombobox}
           onClick={() => {
             selector.organizeByComboBox.state
               ? dispatch({
@@ -414,19 +447,21 @@ const ShowProducts = () => {
                   type: typeState.CHANGE_STATE_ORGANIZE_BY_COMBOBOX,
                   payload: true,
                 });
-          }} 
+                changeStateFilters(false, typeState.CHANGE_STATE_ORGANIZE_BY_COMBOBOX);
+          }}
         ></input>
         <div
-           style={
+          style={
             selector.organizeByComboBox.state
               ? { display: "flex" }
               : { display: "none" }
-          } 
+          }
         >
           {arrayOrganizeBy.map((listOrganizeBy, index) => {
             return (
-              <h3 key={index}
-               onClick={() => {
+              <h3
+                key={index}
+                onClick={() => {
                   dispatch({
                     type: typeState.CHANGE_STATE_ORGANIZE_BY_COMBOBOX,
                     payload: false,
