@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <header>
         <img src={imgAnalysis}></img>
-        <h3>Analisis de ventas en proceso</h3>
+        <h3>Analisis de ventas</h3>
         <button onClick={(()=>{
           console.log(objectData())
         })}>Objeto en consola</button>
