@@ -32,6 +32,7 @@ header >  button:hover {
 main {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: center;
 }
 
 main > section:nth-child(2) {
