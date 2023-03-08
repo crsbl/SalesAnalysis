@@ -2,6 +2,7 @@ import mock from "../mock";
 import "../styles/showProducts/index.css";
 import "../styles/showProducts/indexResponsive.css";
 import typeState from "../state/showProducts/types";
+import typeModalAlert from "../state/modalAlert/type";
 import functionShowProducts from "../functions/functionShowProducts";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -148,7 +149,7 @@ const ShowProducts = () => {
         ></input>
       </div>
 
-      <div >
+      <div>
         <h3>Categoria</h3>
         <input
           readOnly
@@ -164,7 +165,10 @@ const ShowProducts = () => {
                   payload: true,
                 });
 
-                changeStateFilters(false, typeState.CHANGE_STATE_PRODUCT_TYPE_COMBOBOX);
+            changeStateFilters(
+              false,
+              typeState.CHANGE_STATE_PRODUCT_TYPE_COMBOBOX
+            );
           }}
         ></input>
         <div
@@ -211,7 +215,10 @@ const ShowProducts = () => {
                   type: typeState.CHANGE_STATE_PRODUCT_BRAND_COMBOBOX,
                   payload: true,
                 });
-                changeStateFilters(false, typeState.CHANGE_STATE_PRODUCT_BRAND_COMBOBOX);
+            changeStateFilters(
+              false,
+              typeState.CHANGE_STATE_PRODUCT_BRAND_COMBOBOX
+            );
           }}
         ></input>
         <div
@@ -259,7 +266,7 @@ const ShowProducts = () => {
                   payload: true,
                 });
 
-                changeStateFilters(false, typeState.CHANGE_STATE_SELLERS_COMBOBOX);
+            changeStateFilters(false, typeState.CHANGE_STATE_SELLERS_COMBOBOX);
           }}
         ></input>
         <div
@@ -307,7 +314,6 @@ const ShowProducts = () => {
                   type: typeState.CHANGE_INPUT_CHECKBOX_DATE,
                   payload: true,
                 });
-               
               }
             }}
             type="checkbox"
@@ -328,7 +334,14 @@ const ShowProducts = () => {
                   new Date(selector.date.finishDate).getTime() <
                   new Date(e.currentTarget.value).getTime()
                 ) {
-                  alert("Fecha de inicio no puede ser mayor a fecha fin");
+                  dispatch({
+                    type: typeModalAlert.CHANGE_GLOBAL_STATE_MODAL_ALERT,
+                    payload: {
+                      state: true,
+                      type: "error",
+                      message: "Fecha de inicio no puede ser mayor a fecha fin",
+                    },
+                  });
                 } else {
                   dispatch({
                     type: typeState.CHANGE_INPUT_START_DATE,
@@ -350,7 +363,15 @@ const ShowProducts = () => {
                   new Date(selector.date.startDate).getTime() >
                   new Date(e.currentTarget.value).getTime()
                 ) {
-                  alert("Fecha fin no puede ser menor a fecha inicio");
+             
+                  dispatch({
+                    type: typeModalAlert.CHANGE_GLOBAL_STATE_MODAL_ALERT,
+                    payload: {
+                      state: true,
+                      type: "error",
+                      message: "Fecha fin no puede ser menor a fecha inicio",
+                    },
+                  });
                 } else {
                   dispatch({
                     type: typeState.CHANGE_INPUT_FINISH_DATE,
@@ -383,7 +404,6 @@ const ShowProducts = () => {
                   payload: true,
                 });
               }
-             
             }}
             type="checkbox"
           ></input>
@@ -403,7 +423,14 @@ const ShowProducts = () => {
                   parseInt(selector.price.finishPrice) <
                   parseInt(e.currentTarget.value)
                 ) {
-                  alert("Precio de inicio no puede ser mayor a precio fin");
+                  dispatch({
+                    type: typeModalAlert.CHANGE_GLOBAL_STATE_MODAL_ALERT,
+                    payload: {
+                      state: true,
+                      type: "error",
+                      message: "Precio de inicio no puede ser mayor a precio fin",
+                    },
+                  });
                 } else {
                   dispatch({
                     type: typeState.CHANGE_INPUT_START_PRICE,
@@ -447,7 +474,10 @@ const ShowProducts = () => {
                   type: typeState.CHANGE_STATE_ORGANIZE_BY_COMBOBOX,
                   payload: true,
                 });
-                changeStateFilters(false, typeState.CHANGE_STATE_ORGANIZE_BY_COMBOBOX);
+            changeStateFilters(
+              false,
+              typeState.CHANGE_STATE_ORGANIZE_BY_COMBOBOX
+            );
           }}
         ></input>
         <div
