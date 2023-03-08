@@ -9,7 +9,6 @@ import objectData from "./mock.js";
 import { useSelector } from "react-redux";
 function App() {
   const selector = useSelector((state) => state.modalAlert);
-  console.log(selector);
   return (
     <div className="App">
       {selector.modalAlert.state === true && (
